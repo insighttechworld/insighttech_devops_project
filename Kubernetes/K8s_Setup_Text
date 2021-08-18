@@ -1,0 +1,315 @@
+Container Orchestration
+
+
+>>What are the benefits of container orchestration?
+
+Container orchestration is key to working with containers, and it allows organizations to unlock their full benefits. It also offers its own benefits for a containerized environment, including: 
+
+•   Simplified operations: This is the most important benefit of container orchestration and the main reason for its adoption. Containers introduce a large amount of complexity that can quickly get out of control without container orchestration to manage it.
+•   Resilience: Container orchestration tools can automatically restart or scale a container or cluster, boosting resilience.
+•   Added security: Container orchestration’s automated approach helps keep containerized applications secure by reducing or eliminating the chance of human error. 
+
+
+
+>>Container orchestration versus Docker
+
+Docker is a specific platform for building containers, including the Docker Engine container runtime, whereas container orchestration is a broader term referring to automation of any container’s lifecycle. Docker also includes Docker Swarm, which is the platform’s own container orchestration tool that can automatically start Docker containers.
+
+
+-------------------------Kubernetes
+
+
+>>What is Kubernetes container orchestration?
+
+Kubernetes is a popular open source platform for container orchestration. It enables developers to easily build containerized applications and services, as well as scale, schedule and monitor those containers. While there are other options for container orchestration, such as Apache Mesos or Docker Swarm, Kubernetes has become the industry standard. Kubernetes provides extensive container capabilities, a dynamic contributor community, the growth of cloud-native application development and the widespread availability of commercial and hosted Kubernetes tools. Kubernetes is also highly extensible and portable, meaning it can run in a wide range of environments and be used in conjunction with other technologies, such as service meshes.
+
+In addition to enabling the automation fundamental to container orchestration, Kubernetes is considered highly declarative. This means that developers and administrators use it to essentially describe how they want a system to behave, and then Kubernetes executes that desired state in dynamic fashion.
+
+
+
+Kubernetes continues to be popular with practitioners of DevOps since it enables them to deliver a Platform-as-a-Service, which creates an abstract hardware layer for development teams.
+Known for its portability, Kubernetes’ starting pointing is the cluster itself, which allows you to move workloads around without having to worry about redesigning your application or redefine your infrastructure.
+
+
+------------------------->>Pods
+
+Unlike other systems you may have used in the past, Kubernetes doesn’t run containers directly; instead it wraps one or more containers into a higher-level structure called a pod. Any containers in the same pod will share the same resources and local network. Containers can easily communicate with other containers in the same pod as though they were on the same machine while maintaining a degree of isolation from others.
+Pods are used as the unit of replication in Kubernetes. If your application becomes too popular and a single pod instance can’t carry the load, Kubernetes can be configured to deploy new replicas of your pod to the cluster as necessary. Even when not under heavy load, it is standard to have multiple copies of a pod running at any time in a production system to allow load balancing and failure resistance.
+
+
+------------------------->>Kubeadm (Kube Admin)
+
+Kubeadm is a tool built to provide kubeadm init and kubeadm join as best-practice "fast paths" for creating Kubernetes clusters. kubeadm performs the actions necessary to get a minimum viable cluster up and running. By design, it cares only about bootstrapping, not about provisioning machines.
+
+------------------------------>>AWS CLI
+
+The AWS Command Line Interface (CLI) is a unified tool to manage your AWS services. With just one tool to download and configure, you can control multiple AWS services from the command line and automate them through scripts.
+
+
+------------------------>>What is AWS Route 53 used for?
+
+Amazon Route 53 is a highly available and scalable cloud Domain Name System (DNS) web service. It is designed to give developers and businesses an extremely reliable and cost effective way to route end users to Internet applications by translating names like www.example.com into the numeric IP addresses like 192.0.2.1 that computers use to connect to each other. Amazon Route 53 is fully compliant with IPv6 as well.
+
+Amazon Route 53 effectively connects user requests to infrastructure running in AWS – such as Amazon EC2 instances, Elastic Load Balancing load balancers, or Amazon S3 buckets – and can also be used to route users to infrastructure outside of AWS. You can use Amazon Route 53 to configure DNS health checks to route traffic to healthy endpoints or to independently monitor the health of your application and its endpoints.
+
+
+Benefits
+--------
+Highly available and reliable
+Flexible
+Designed for use with other Amazon Web Services
+Simple
+Fast
+Cost-effective
+Secure
+Scalable
+
+
+>>Amazon S3
+
+Amazon S3 is object storage built to store and retrieve any amount of data from anywhere on the Internet. It's a simple storage service that offers industry leading durability, availability, performance, security, and virtually unlimited scalability at very low costs.
+
+Advantages of using Amazon S3
+Amazon S3 is intentionally built with a minimal feature set that focuses on simplicity and robustness. Following are some of the advantages of using Amazon S3:
+
+Creating buckets – Create and name a bucket that stores data. Buckets are the fundamental containers in Amazon S3 for data storage.
+
+Storing data – Store an infinite amount of data in a bucket. Upload as many objects as you like into an Amazon S3 bucket. Each object can contain up to 5 TB of data. Each object is stored and retrieved using a unique developer-assigned key.
+
+Downloading data – Download your data or enable others to do so. Download your data anytime you like, or allow others to do the same.
+
+Permissions – Grant or deny access to others who want to upload or download data into your Amazon S3 bucket. Grant upload and download permissions to three types of users. Authentication mechanisms can help keep data secure from unauthorized access.
+
+Standard interfaces – Use standards-based REST and SOAP interfaces designed to work with any internet-development toolkit.
+
+
+>>Amazon S3 concepts
+
+Buckets
+S3 bucket is a public cloud storage resource available in Amazon Web Services' (AWS) Simple Storage Service (S3), an object storage offering. Amazon S3 buckets, which are similar to file folders, store objects, which consist of data and its descriptive metadata. A bucket is a container for objects stored in Amazon S3. Every object is contained in a bucket. 
+
+Objects
+Objects are the fundamental entities stored in Amazon S3. Objects consist of object data and metadata. The data portion is opaque to Amazon S3.
+
+Regions
+You can choose the geographical AWS Region where Amazon S3 will store the buckets that you create. You might choose a Region to optimize latency, minimize costs, or address regulatory requirements. Objects stored in a Region never leave the Region unless you explicitly transfer them to another Region. For example, objects stored in the Europe (Ireland) Region never leave it.
+
+
+
+---------------------------->>Tasks in K8s
+
+- Setting up K8s environment
+- Using kubectl commands
+- Writing deployment service files
+- Creating Ansible Playbook to deploy Pod on K8s cluster
+- Integrate K8s with Jenkins and run Jenkins job to deploy on k8s cluster automatically
+
+
+---------------------->>Clone the below repository for complete documentation:
+
+https://github.com/insighttechworld/insighttech_devops_project.git
+
+
+
+
+-------------------------->> Setup Kubernetes (K8s) Cluster on AWS <<-----------------------
+
+1. Create Ubuntu EC2 instance
+
+2. Install AWSCLI
+
+Follow this link:
+https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
+
+OR
+
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+apt install unzip python
+unzip awscliv2.zip
+sudo ./aws/install
+./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+aws --version       --> to confirm
+
+
+3. Install kubectl on ubuntu instance
+
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+kubectl      --->  to try kubectl command
+
+Try kops command to see if kops is installed
+kops
+
+
+4. Install kops on ubuntu instance
+
+Kubernetes Operations, or Kops, is an open source project used to set up Kubernetes clusters easily and swiftly. It's considered the “kubectl” way of creating clusters. Kops allows deployment of highly available Kubernetes clusters on AWS and Google (GCP) clouds.
+
+curl -LO  https://github.com/kubernetes/kops/releases/download/1.15.0/kops-linux-amd64
+chmod +x kops-linux-amd64
+sudo mv kops-linux-amd64 /usr/local/bin/kops
+kops version    -->  (it should be 1.15.0)
+kops
+
+Note: Use the below command if you wish to use latest version. For now we could see latest version of kops. So ignore it until further update. 
+# curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+
+
+5. Create an IAM user/role with Route53, EC2, IAM and S3 full access
+Services -->  IAM  -->  Roles  -->  Create a role  -->  choose EC2  -->  Next Permission  -->  attach policies here (EC2 fullaccess, S3 fullaccess, Route53 fullaccess and IAM fullaccess)  --> Next Tags  -->  Name: k8s-role  --> Next: Review  -->  Role name: k8s-role  --> Create role  
+
+
+6. Attach IAM role to ubuntu EC2 instance
+
+Goto EC2 Instance  --> select the EC2 instance  -->  Actions  -->  Instance settings  -->  Attach/Replace IAM Role  --> choose k8s-role  -->  Apply  --> Close
+
+# Note: If you create IAM user with programmatic access then provide Access keys. Otherwise region information is enough
+
+aws configure
+root@ip-172-31-58-3:/home/ubuntu# aws configure
+AWS Access Key ID [None]:
+AWS Secret Access Key [None]:
+Default region name [None]: us-east-1   --> (enter your EC2 instance region)
+Default output format [None]:
+
+
+7. Create a Route53 private hosted zone (you can create Public hosted zone if you have a domain)
+
+Goto AWS console   --> services  -->  Networking  --> Route53  --> Get Started now  --> Create Hosted Zone  -->  Domain name: insighttech.net  -->  Private Hosted zone  -->  choose your region [us-east-1]  -->  choose VPC info ID --> Create
+
+Route53 --> hosted zones --> created hosted zone  
+Domain Name: insighttech.net
+Type: Private hosted zone for Amazon VPC. Make sure you are chosing right VPC if you have multiple
+
+
+8. create an S3 bucket (on awsCLI or AWS Console)
+goto AWS console  --> s3 to confirm existing buckets
+
+aws s3 mb s3://demo.k8s.insighttech.net
+
+root@ip-172-31-58-3:/home/ubuntu# aws s3 mb s3://demo.k8s.insighttech.net
+make_bucket: demo.k8s.insighttech.net
+
+go back to AWS console to confirm creation of the bucket.
+
+
+9. Expose environment variable: need to export the s3 bucket, so that kops could use it
+
+export KOPS_STATE_STORE=s3://demo.k8s.insighttech.net
+
+
+10. Create sshkeys before creating cluster - because this will be used to login to our kubernetes cluster, without this, we won't be able to login to our kubernetes cluster
+
+ssh-keygen
+cd ~/.ssh
+ls -l
+
+the public key will be copied to kubernetes cluster, so by using the key, we can login tothe cluster seemlessly
+
+11. Create kubernetes cluster definitions on S3 bucket  -- need to specify available region based on the region we created all our resources
+
+kops create cluster --cloud=aws --zones=us-east-1a --name=demo.k8s.insighttech.net --dns-zone=insighttech.net --dns private 
+
+Output:
+Must specify --yes to apply changes
+
+Cluster configuration has been created.
+
+Suggestions:
+ * list clusters with: kops get cluster
+ * edit this cluster with: kops edit cluster demo.k8s.insighttech.net
+ * edit your node instance group: kops edit ig --name=demo.k8s.insighttech.net nodes
+ * edit your master instance group: kops edit ig --name=demo.k8s.insighttech.net master-us-east-1a
+
+Finally configure your cluster with: kops update cluster --name demo.k8s.insighttech.net --yes
+
+
+12. Create kubernetes cluser, whenever this command is executed, the cluster get created
+
+kops update cluster demo.k8s.insighttech.net --yes
+
+OUTPUT:
+Cluster is starting.  It should be ready in a few minutes.
+
+Suggestions:
+ * validate cluster: kops validate cluster
+ * list nodes: kubectl get nodes --show-labels
+ * ssh to the master: ssh -i ~/.ssh/id_rsa admin@api.demo.k8s.insighttech.net
+ * the admin user is specific to Debian. If not using Debian please use the appropriate user based on your OS.
+ * read about installing addons at: https://github.com/kubernetes/kops/blob/master/docs/addons.md.
+
+kops validate cluster    ---> to validate the k8s clusters
+
+OUTPUT:
+root@ip-172-31-83-254:~/.ssh# kops validate cluster
+Using cluster from kubectl context: demo.k8s.insighttech.net
+
+Validating cluster demo.k8s.insighttech.net
+
+INSTANCE GROUPS
+NAME                    ROLE    MACHINETYPE     MIN     MAX     SUBNETS
+master-us-east-1a       Master  m3.medium       1       1       us-east-1a
+nodes                   Node    t2.medium       2       2       us-east-1a
+
+NODE STATUS
+NAME                            ROLE    READY
+ip-172-20-52-147.ec2.internal   master  True
+ip-172-20-55-91.ec2.internal    node    True
+ip-172-20-61-111.ec2.internal   node    True
+
+Your cluster demo.k8s.insighttech.net is ready
+
+Note:
+After executing this command, it will create other additional resources in AWS, new file in s3, IAM roles, Route53 records set and routes, EC2 instaces launched and Launched configuration as well as Auto-scalling group in case of any failure.
+
+Next is to ssh to the master: 
+ssh -i ~/.ssh/id_rsa admin@api.demo.k8s.insighttech.net
+ssh -i ~/.ssh/id_rsa admin@api.demo.k8s.insighttech.net
+
+Now you are in the Master K8s cluster, you can confirm the with the master-us-east master on AWS console (the Private IP)
+
+exit    --> to go back to Ubuntu environment
+
+
+13. To change the kubernetes master and worker instance sizes
+You can edit the nodes and master nodes name and instance type:
+
+##kops edit ig --name=<cluster_name> nodes
+kops edit ig --name=demo.k8s.insighttech.net nodes 
+
+##kops edit ig --name=<cluster_name> master-<zone_name>
+kops edit ig --name=demo.k8s.insighttech.net master-us-east-1a
+
+
+14. Validate your cluster
+kops validate cluster
+
+15. To list nodes
+kubectl get nodes
+
+
+16. To Delete cluster (try once your lab is done) once you delete, all definitions on AWS account will be deleted and will remove the resources as well
+#kops delete cluster <cluster_name> --yes
+kops delete cluster demo.k8s.insighttech.net --yes
+
+
+----------------------------Deploying Nginx pods on Kubernetes
+
+1. Deploying Nginx Container
+
+##kubectl run --generator=run-pod/v1 sample-nginx --image=nginx --replicas=2 --port=80
+kubectl run sample-nginx --image=nginx --replicas=2 --port=80
+# kubectl run simple-devops-project --image=oamosu/simple-devops-image --replicas=2 --port=8080
+kubectl get pods
+kubectl get deployments
+
+2. Expose the deployment as service. This will create an ELB in front of those 2 containers and allow us to publicly access them.
+
+#kubectl expose deployment sample-nginx --port=80 --type=LoadBalancer
+kubectl expose deployment simple-devops-project --port=8080 --type=LoadBalancer
+kubectl get services -o wide
+
+NOTE:
+“A container runs logically in a pod (though it also uses a container runtime); A group of pods, related or unrelated, run on a cluster. A pod is a unit of replication on a cluster; A cluster can contain many pods, related or unrelated [and] grouped under the tight logical borders called namespaces.”
+Unlike other systems you may have used in the past, Kubernetes doesn't run containers directly; instead it wraps one or more containers into a higher-level structure called a pod. Any containers in the same pod will share the same resources and local network. Pods are used as the unit of replication in Kubernetes.
